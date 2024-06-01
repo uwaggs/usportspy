@@ -4,7 +4,7 @@
 This package is still early in development, and is subject to unexpected changes. If you'd still like to try this out, be sure to only use the latest package.
 
 ## Included Sports
-- [X] Wrestling
+- [X] [Wrestling](https://github.com/uwaggs/wrestling)
 - [ ] Volleyball
 - [ ] Basketball
 - [ ] Ice Hockey
