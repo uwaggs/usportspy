@@ -151,7 +151,7 @@ Expected output:
 - Returns `Rank`, `Team`, `Count`, `Gender`, and `Date` (date data was recorded).
 
 #### `swimming_athlete_rankings()`
-- Returns a pandas dataframe with the columns `Rank`, `Athlete/University`, `Age`, `Team`, `Conference`, `Date`, `Meet`, `Time`, `FINA`, and `Event`. For relay events, age is `N/A`.
+- Returns a pandas dataframe with the columns `Season`, `Gender`, `Rank`, `Athlete/University`, `Age`, `Team`, `Conference`, `Date`, `Meet`, `Time`, `FINA`, `Event`, `Date Collected`. For relay events, age is `N/A`.
 
 Example usage:
 ```Python
@@ -163,77 +163,32 @@ print(swimming_athlete_rankings())
 
 Expected output:
 ```
-    Rank                                     Team  Count  Gender        Date
-0      1                    University Of Toronto    585    Male  31/05/2024
-1      2           University Of British Columbia    485    Male  31/05/2024
-2      3            University Of Calgary Varsity    409    Male  31/05/2024
-3      4                        McGill University    309    Male  31/05/2024
-4      5                     University Of Ottawa    210    Male  31/05/2024
-5      6  University Of Alberta Varsity Swim Team    168    Male  31/05/2024
-6      7              WESTERN UNIVERSITY SWIMMING    117    Male  31/05/2024
-7      8                   University Of Waterloo    107    Male  31/05/2024
-8      9                 University Of Lethbridge     84    Male  31/05/2024
-9     10                      McMaster University     73    Male  31/05/2024
-10    11                     UVIC VIKES Swim Team     71    Male  31/05/2024
-11    12                          York University     59    Male  31/05/2024
-12    13              Dalhousie University Tigers     49    Male  31/05/2024
-13    14             Memorial University Seahawks     48    Male  31/05/2024
-14    15               Wilfrid Laurier University     45    Male  31/05/2024
-15    16                Rouge et Or Universitaire     31    Male  31/05/2024
-16    17                      Carleton University     22    Male  31/05/2024
-17    18                   UNIVERSITE DE MONTREAL     20    Male  31/05/2024
-18    19                        Acadia University     15    Male  31/05/2024
-19    20                 UNIVERSITE DE SHERBROOKE     12    Male  31/05/2024
-20    21    UNIVERSITE DU QUEBEC A TROIS-RIVIERES      8    Male  31/05/2024
-21    21               Brock University Swim Club      8    Male  31/05/2024
-22    23   University Of Manitoba Bisons Swimming      7    Male  31/05/2024
-23    24                     University Of Guelph      4    Male  31/05/2024
-24    24                   Mount Allison Mounties      4    Male  31/05/2024
-25    26                         UNB Varsity Reds      2    Male  31/05/2024
-26    27              Queens University Swim Club      0    Male  31/05/2024
-27    27                           Upei Swim Club      0    Male  31/05/2024
-28    27     University Of Regina Cougar Swimming      0    Male  31/05/2024
-29     1           University Of British Columbia    842  Female  31/05/2024
-30     2                    University Of Toronto    660  Female  31/05/2024
-31     3            University Of Calgary Varsity    381  Female  31/05/2024
-32     4                        McGill University    329  Female  31/05/2024
-33     5              WESTERN UNIVERSITY SWIMMING    123  Female  31/05/2024
-34     6                   UNIVERSITE DE MONTREAL     90  Female  31/05/2024
-35     7                        Acadia University     81  Female  31/05/2024
-36     8                 University Of Lethbridge     73  Female  31/05/2024
-37     9   University Of Manitoba Bisons Swimming     59  Female  31/05/2024
-38    10                      McMaster University     58  Female  31/05/2024
-39    11                   University Of Waterloo     56  Female  31/05/2024
-40    12              Dalhousie University Tigers     50  Female  31/05/2024
-41    13                     UVIC VIKES Swim Team     48  Female  31/05/2024
-42    14  University Of Alberta Varsity Swim Team     24  Female  31/05/2024
-43    15                Rouge et Or Universitaire     22  Female  31/05/2024
-44    16               Brock University Swim Club     20  Female  31/05/2024
-45    17                 UNIVERSITE DE SHERBROOKE     14  Female  31/05/2024
-46    18                     University Of Guelph      8  Female  31/05/2024
-47    19                     University Of Ottawa      7  Female  31/05/2024
-48    20              Queens University Swim Club      4  Female  31/05/2024
-49    21                   Mount Allison Mounties      3  Female  31/05/2024
-50    22     University Of Regina Cougar Swimming      1  Female  31/05/2024
-51    23                          York University      0  Female  31/05/2024
-52    23    UNIVERSITE DU QUEBEC A TROIS-RIVIERES      0  Female  31/05/2024
-53    23               Wilfrid Laurier University      0  Female  31/05/2024
-54    23                           Upei Swim Club      0  Female  31/05/2024
-55    23                         UNB Varsity Reds      0  Female  31/05/2024
-56    23             Memorial University Seahawks      0  Female  31/05/2024
-57    23                      Carleton University      0  Female  31/05/2024
-       Rank                     Athlete/University  ...  FINA             Event
-0         1                          Forde, Martyn  ...   815           50 Free
-1         2                       Haynes, Terrence  ...   809           50 Free
-2         3                             Ng, Callum  ...   783           50 Free
-3         4                         Anctil, Pascal  ...   765           50 Free
-4         5                      Savoie, Alexandre  ...   760           50 Free
-...     ...                                    ...  ...   ...               ...
-29709    24                       UNB Varsity Reds  ...   566  400 Medley Relay
-29710    25   University Of Regina Cougar Swimming  ...   557  400 Medley Relay
-29711    26  UNIVERSITE DU QUEBEC A TROIS-RIVIERES  ...   530  400 Medley Relay
-29712    27                    Carleton University  ...   489  400 Medley Relay
-29713    28                        York University  ...   405  400 Medley Relay
+     Rank                            Team  Count  Gender        Date
+0       1           University Of Toronto    585    Male  31/05/2024
+1       2  University Of British Columbia    485    Male  31/05/2024
+2       3   University Of Calgary Varsity    409    Male  31/05/2024
+3       4               McGill University    309    Male  31/05/2024
+4       5            University Of Ottawa    210    Male  31/05/2024
+..    ...                             ...    ...     ...         ...
+111    23      Wilfrid Laurier University      0  Female  26/06/2024
+112    23                  Upei Swim Club      0  Female  26/06/2024
+113    23                UNB Varsity Reds      0  Female  26/06/2024
+114    23    Memorial University Seahawks      0  Female  26/06/2024
+115    23             Carleton University      0  Female  26/06/2024
 
-[29714 rows x 10 columns]
+[116 rows x 5 columns]
+          Season  Gender  Rank  ... FINA             Event Date Collected
+0      2007-2008    Male     1  ...  815           50 Free     27/06/2024
+1      2007-2008    Male     2  ...  809           50 Free     27/06/2024
+2      2007-2008    Male     3  ...  783           50 Free     27/06/2024
+3      2007-2008    Male     4  ...  765           50 Free     27/06/2024
+4      2007-2008    Male     5  ...  760           50 Free     27/06/2024
+...          ...     ...   ...  ...  ...               ...            ...
+29709  2023-2024  Female    24  ...  566  400 Medley Relay     27/06/2024
+29710  2023-2024  Female    25  ...  557  400 Medley Relay     27/06/2024
+29711  2023-2024  Female    26  ...  530  400 Medley Relay     27/06/2024
+29712  2023-2024  Female    27  ...  489  400 Medley Relay     27/06/2024
+29713  2023-2024  Female    28  ...  405  400 Medley Relay     27/06/2024
+
+[29714 rows x 13 columns]
 ```

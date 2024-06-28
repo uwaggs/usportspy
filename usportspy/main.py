@@ -10,9 +10,9 @@ Wrestling Functions
 
 def wrestling_athlete_rankings(gender, weight):
     if gender == "MALE":
-        url = "https://github.com/uwaggs/wrestling/releases/download/wrestling_athlete_rankings/mens_athlete.csv"
+        url = "https://github.com/uwaggs/usports-wrestling/releases/download/wrestling_athlete_rankings/mens_athlete.csv"
     else:
-        url = "https://github.com/uwaggs/wrestling/releases/download/wrestling_athlete_rankings/womens_athlete.csv"
+        url = "https://github.com/uwaggs/usports-wrestling/releases/download/wrestling_athlete_rankings/womens_athlete.csv"
         
     response = requests.get(url)
     response.raise_for_status()  
@@ -26,9 +26,9 @@ def wrestling_athlete_rankings(gender, weight):
 
 def wrestling_team_rankings(gender):
     if gender == "MALE":
-        url = "https://github.com/uwaggs/wrestling/releases/download/wrestling_team_rankings/mens_team.csv"
+        url = "https://github.com/uwaggs/usports-wrestling/releases/download/wrestling_team_rankings/mens_team.csv"
     else:
-        url = "https://github.com/uwaggs/wrestling/releases/download/wrestling_team_rankings/womens_team.csv"
+        url = "https://github.com/uwaggs/usports-wrestling/releases/download/wrestling_team_rankings/womens_team.csv"
         
     response = requests.get(url)
     response.raise_for_status()  
@@ -46,7 +46,7 @@ Swimming Functions
 '''
 
 def swimming_team_rankings():
-    url = "https://github.com/uwaggs/swimming/releases/download/swimming_team_rankings/swimming_team_rankings.csv"        
+    url = "https://github.com/uwaggs/usports-swimming/releases/download/swimming_team_rankings/swimming_team_rankings.csv"        
     response = requests.get(url)
     response.raise_for_status()  
     
@@ -57,7 +57,7 @@ def swimming_team_rankings():
 
 
 def swimming_athlete_rankings():
-    url = "https://github.com/uwaggs/swimming/releases/download/swimming_athlete_rankings/swimming_athlete_rankings.csv"        
+    url = "https://github.com/uwaggs/usports-swimming/releases/download/swimming_athlete_rankings/swimming_athlete_rankings.csv"        
     response = requests.get(url)
     response.raise_for_status()  
     

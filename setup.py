@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 
 setup(
     name='usportspy',
-    version='0.0.4',
+    version='0.0.5',
     packages=find_packages(),
     install_requires=[
         'requests',
