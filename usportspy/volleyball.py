@@ -5,6 +5,9 @@ import pandas as pd
 Volleyball
 '''
 def volleyball_get_schedule(gender):
+    if gender not in ["MALE", "FEMALE"]:
+        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+
     if gender == "MALE":
         url = "https://github.com/uwaggs/usports-data/releases/download/volleyball_schedule/mens_vball_schedule.csv"
     else:
@@ -12,22 +15,27 @@ def volleyball_get_schedule(gender):
     
     err, df = h.get_data(url) 
     if err:
-        message = f"Error getting volleyball schedule for {gender}. Ensure 'gender' is either 'MALE' or 'FEMALE'."
+        message = f"Error making request for volleyball schedule for Gender: {gender}."
         raise h.UsportspyError(message, err)
 
     return df
 
 
 def volleyball_get_team_box_score(gender, seasons=[]):
+    if gender not in ["MALE", "FEMALE"]:
+        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
+    h.validate_season("volleyball_team_box_score", seasons)
+
     for season in seasons:
-        url = f"https://github.com/uwaggs/usports-data/releases/download/volleyball_team_box_score/{prefix}_team_box_score_{season}.csv"
+        url = f"https://github.com/uwaggs/usports-data/releases/download/volleyball_team_box_score/{prefix}_team_box_score_{h.year_to_season(season)}.csv"
         err, df = h.get_data(url) 
 
         if err:
-            message = f"Error getting volleyball team box scores for {gender} in {season}. Ensure 'gender' is either 'MALE' or 'FEMALE' and 'seasons' contains a valid season."
+            message = f"Error making request for volleyball team box scores for Gender: {gender} and Seasons: {seasons}."
             raise h.UsportspyError(message, err)
 
         # Drop the 'Unnamed: 0' column
@@ -40,15 +48,20 @@ def volleyball_get_team_box_score(gender, seasons=[]):
 
     
 def volleyball_get_player_box_score(gender, seasons=[]):
+    if gender not in ["MALE", "FEMALE"]:
+        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
+    h.validate_season("volleyball_player_box_score", seasons)
+
     for season in seasons:
-        url = f"https://github.com/uwaggs/usports-data/releases/download/volleyball_player_box_score/{prefix}_vb_player_box_score_{season}.csv"
+        url = f"https://github.com/uwaggs/usports-data/releases/download/volleyball_player_box_score/{prefix}_vb_player_box_score_{h.year_to_season(season)}.csv"
         err, df = h.get_data(url)
 
         if err:
-            message = f"Error getting volleyball player box scores for {gender} in {season}. Ensure 'gender' is either 'MALE' or 'FEMALE' and 'seasons' contains a valid season."
+            message = f"Error making request for volleyball player box scores for Gender: {gender} and Seasons: {seasons}."
             raise h.UsportspyError(message, err)
 
         # Drop the 'Unnamed: 0' column
@@ -60,15 +73,20 @@ def volleyball_get_player_box_score(gender, seasons=[]):
 
 
 def volleyball_get_pbp(gender, seasons=[]):
+    if gender not in ["MALE", "FEMALE"]:
+        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
+    h.validate_season("volleybal_pbp", seasons)
+
     for season in seasons:
-        url = f"https://github.com/uwaggs/usports-data/releases/download/volleybal_pbp/{prefix}_vb_pbp_{season}.csv"
+        url = f"https://github.com/uwaggs/usports-data/releases/download/volleybal_pbp/{prefix}_vb_pbp_{h.year_to_season(season)}.csv"
         err, df = h.get_data(url) 
 
         if err:
-            message = f"Error getting volleyball play-by-play for {gender} in {season}. Ensure 'gender' is either 'MALE' or 'FEMALE' and 'seasons' contains a valid season."
+            message = f"Error making request for volleyball play-by-play data for Gender: {gender} and Seasons: {seasons}."
             raise h.UsportspyError(message, err)
 
         # Drop the 'Unnamed: 0' column

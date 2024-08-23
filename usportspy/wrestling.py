@@ -15,7 +15,7 @@ def wrestling_athlete_rankings(gender, weight):
 
     err, df = h.get_data(url) 
     if err:
-        raise h.UsportspyError(f"Error getting wrestling athlete rankings.", err)
+        raise h.UsportspyError(f"Error makign request for wrestling athlete rankings for Gender: {gender} and Weight: {weight}kg.", err)
 
     df = df[df['Weight Category'] == str(weight) + 'kg']
     df = df.reset_index(drop=True)
@@ -32,6 +32,9 @@ def wrestling_team_rankings(gender):
         url = "https://github.com/uwaggs/usports-data/releases/download/wrestling_team_rankings/womens_team.csv"
         
     err, df = h.get_data(url) 
+    if err:
+        raise h.UsportspyError(f"Error makign request for wrestling team rankings for Gender: {gender}.", err)
+
     return df 
 
 
