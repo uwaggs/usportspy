@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
-with open('README.md', 'r') as f:
+with open('PYPI.md', 'r') as f:
     l_description = f.read()
 
 
 setup(
     name='usportspy',
-    version='0.0.6',
+    version='0.0.7',
     packages=find_packages(),
     install_requires=[
         'requests',
