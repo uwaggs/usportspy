@@ -28,7 +28,10 @@ def soccer_get_team_box_score(gender, seasons=[]):
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
-    h.validate_season("soccer_team_box_score", seasons)
+    if len(seasons):
+        h.validate_season("soccer_team_box_score", seasons)
+    else:
+        seasons = h.available_seasons("soccer_team_box_score")
 
     for season in seasons:
         url = f"https://github.com/uwaggs/usports-data/releases/download/soccer_team_box_score/{prefix}_team_box_score_{h.year_to_season(season)}.csv"
@@ -39,7 +42,7 @@ def soccer_get_team_box_score(gender, seasons=[]):
             raise h.UsportspyError(message, err)
 
         # Drop the 'Unnamed: 0' column
-        df = df.drop(columns=['Unnamed: 0'])
+        df = df.drop(columns=['Unnamed: 0'], errors='ignore')
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
@@ -53,7 +56,10 @@ def soccer_get_player_box_score(gender, seasons=[]):
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
-    h.validate_season("soccer_player_box_score", seasons)
+    if len(seasons):
+        h.validate_season("soccer_player_box_score", seasons)
+    else:
+        seasons = h.available_seasons("soccer_player_box_score")
 
     for season in seasons:
         url = f"https://github.com/uwaggs/usports-data/releases/download/soccer_player_box_score/{prefix}_player_box_score_{h.year_to_season(season)}.csv"
@@ -64,7 +70,7 @@ def soccer_get_player_box_score(gender, seasons=[]):
             raise h.UsportspyError(message, err)
 
         # Drop the 'Unnamed: 0' column
-        df = df.drop(columns=['Unnamed: 0'])
+        df = df.drop(columns=['Unnamed: 0'], errors='ignore')
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
@@ -78,7 +84,10 @@ def soccer_get_pbp(gender, seasons=[]):
     prefix = "mens_msoc" if gender == "MALE" else "womens_wsoc"
     combined_df = pd.DataFrame()
 
-    h.validate_season("Soccer_pbp", seasons)
+    if len(seasons):
+        h.validate_season("Soccer_pbp", seasons)
+    else:
+        seasons = h.available_seasons("Soccer_pbp")
 
     for season in seasons:
         url = f"https://github.com/uwaggs/usports-data/releases/download/Soccer_pbp/{prefix}_pbp_{h.year_to_season(season)}.csv"
@@ -89,7 +98,7 @@ def soccer_get_pbp(gender, seasons=[]):
             raise h.UsportspyError(message, err)
 
         # Drop the 'Unnamed: 0' column
-        df = df.drop(columns=['Unnamed: 0'])
+        df = df.drop(columns=['Unnamed: 0'], errors='ignore')
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 

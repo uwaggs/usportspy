@@ -29,8 +29,8 @@ def year_to_season(year):
     return f"{year}-{str((year % 100) + 1).zfill(2)}"
 
 
-def available_seasons(url):
-    response = requests.get(url)
+def available_seasons(tag):
+    response = requests.get(f"https://api.github.com/repos/uwaggs/usports-data/releases/tags/{tag}")
 
     if response.status_code == 200:
         release_data = response.json()
@@ -48,7 +48,7 @@ def available_seasons(url):
     
 
 def validate_season(tag, seasons):
-    a_seasons = available_seasons(f"https://api.github.com/repos/uwaggs/usports-data/releases/tags/{tag}")
+    a_seasons = available_seasons(tag)
 
     bad_seasons_requested = sorted(list(set(seasons).difference(set(a_seasons))))
     if len(bad_seasons_requested):

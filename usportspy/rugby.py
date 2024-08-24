@@ -19,7 +19,7 @@ def rugby_get_schedule(gender):
         message = f"Error making request for rugby schedule for Gender: {gender}."
         raise h.UsportspyError(message, err)
     
-    df = df.drop(columns=['Unnamed: 0'])
+    df = df.drop(columns=['Unnamed: 0'], errors='ignore')
 
     return df
 
