@@ -6,17 +6,17 @@
 ### Disclaimer
 This package is still early in development, and is subject to unexpected changes.
 
-Documentation can be found in the [wiki](https://github.com/uwaggs/usportspy/wiki)
+Documentation can be found in the [wiki](https://github.com/uwaggs/usportspy/wiki).
 
 ### Included Sports
-- [X] Wrestling
-- [X] Volleyball
-- [X] Ice Hockey
-- [X] Swimming
-- [X] Track & Field
-- [X] Cross Country
-- [X] Basketball
-- [X] Field Hockey
-- [X] Soccer
-- [X] Rugby
-- [X] Football
+- Basketball
+- Cross-Country
+- Field Hockey
+- Football
+- Ice Hockey
+- Rugby
+- Soccer
+- Swimming
+- Track & Field
+- Volleyball
+- Wrestling
