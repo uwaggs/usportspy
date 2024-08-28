@@ -25,7 +25,6 @@ def ice_hockey_get_team_box_score(gender, seasons=[]):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
@@ -54,7 +53,6 @@ def ice_hockey_get_player_box_score(gender, seasons=[]):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
@@ -83,7 +81,6 @@ def ice_hockey_get_pbp(gender, seasons=[]):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
     prefix = "mens_mice" if gender == "MALE" else "womens_wice"
     combined_df = pd.DataFrame()
 
