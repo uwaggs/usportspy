@@ -7,8 +7,10 @@ Field Hockey
 def fh_get_schedule(gender):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    
+    if gender not in ["FEMALE"]:
+        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
     if gender == "MALE":
         url = "https://github.com/uwaggs/usports-data/releases/download/field_hockey_schedule/mens_fh_schedule.csv"
     else:
@@ -26,7 +28,9 @@ def fh_get_team_box_score(gender, seasons=[]):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
+    if gender not in ["FEMALE"]:
+        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
@@ -55,7 +59,9 @@ def fh_get_player_box_score(gender, seasons=[]):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
+    if gender not in ["FEMALE"]:
+        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+    
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 
@@ -84,7 +90,9 @@ def fh_get_pbp(gender, seasons=[]):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
 
-    gender = "FEMALE" # Only Womens Field Hockey is available in USPORTS currently
+    if gender not in ["FEMALE"]:
+        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+
     prefix = "mens" if gender == "MALE" else "womens"
     combined_df = pd.DataFrame()
 

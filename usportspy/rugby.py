@@ -7,10 +7,12 @@ Rugby
 def rugby_get_schedule(gender):
     if gender not in ["MALE", "FEMALE"]:
         raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    
+    if gender not in ["FEMALE"]:
+        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Rugby is available for USPORTS currently.")
 
-    gender = "FEMALE" # We only have Womens Rugby data available for now, this will change in the future
     if gender == "MALE":
-        url = "https://github.com/uwaggs/usports-data/releases/download/rugby_schedule/Mens_rugby_schedule.csv"
+        url = ""
     else:
         url = "https://github.com/uwaggs/usports-data/releases/download/rugby_schedule/Womens_rugby_schedule.csv"
     
