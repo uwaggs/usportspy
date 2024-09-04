@@ -4,10 +4,10 @@ from . import helpers as h
 Wrestling Functions
 '''
 def wrestling_athlete_rankings(gender, weight=None):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    if gender == "MALE":
+    if gender == "m":
         url = "https://github.com/uwaggs/usports-data/releases/download/wrestling_athlete_rankings/mens_athlete.csv"
     else:
         url = "https://github.com/uwaggs/usports-data/releases/download/wrestling_athlete_rankings/womens_athlete.csv"
@@ -24,10 +24,10 @@ def wrestling_athlete_rankings(gender, weight=None):
 
 
 def wrestling_team_rankings(gender):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    if gender == "MALE":
+    if gender == "m":
         url = "https://github.com/uwaggs/usports-data/releases/download/wrestling_team_rankings/mens_team.csv"
     else:
         url = "https://github.com/uwaggs/usports-data/releases/download/wrestling_team_rankings/womens_team.csv"

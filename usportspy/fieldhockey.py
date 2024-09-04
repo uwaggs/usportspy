@@ -5,13 +5,13 @@ import pandas as pd
 Field Hockey
 '''
 def fh_get_schedule(gender):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
-    if gender not in ["FEMALE"]:
-        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+    if gender not in ["w"]:
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
 
-    if gender == "MALE":
+    if gender == "m":
         url = "https://github.com/uwaggs/usports-data/releases/download/field_hockey_schedule/mens_fh_schedule.csv"
     else:
         url = "https://github.com/uwaggs/usports-data/releases/download/field_hockey_schedule/womens_fh_schedule.csv"
@@ -25,13 +25,13 @@ def fh_get_schedule(gender):
 
 
 def fh_get_team_box_score(gender, seasons=[]):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    if gender not in ["FEMALE"]:
-        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+    if gender not in ["w"]:
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
 
-    prefix = "mens" if gender == "MALE" else "womens"
+    prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
 
     if len(seasons):
@@ -56,13 +56,13 @@ def fh_get_team_box_score(gender, seasons=[]):
 
     
 def fh_get_player_box_score(gender, seasons=[]):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    if gender not in ["FEMALE"]:
-        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+    if gender not in ["w"]:
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
     
-    prefix = "mens" if gender == "MALE" else "womens"
+    prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
 
     if len(seasons):
@@ -87,13 +87,13 @@ def fh_get_player_box_score(gender, seasons=[]):
 
 
 def fh_get_pbp(gender, seasons=[]):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    if gender not in ["FEMALE"]:
-        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Field Hockey is available for USPORTS currently.")
+    if gender not in ["w"]:
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
 
-    prefix = "mens" if gender == "MALE" else "womens"
+    prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
 
     if len(seasons):

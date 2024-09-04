@@ -5,10 +5,10 @@ from . import helpers as h
 Track and Field Functions
 '''
 def tnf_athlete_rankings(gender, seasons = [], athlete_names = [], events = [], universities = []):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    g = "men" if gender == "MALE" else "women"
+    g = "men" if gender == "m" else "women"
 
     seasons = [f"{season}/{season + 1}" for season in seasons]
 
@@ -39,10 +39,10 @@ def tnf_athlete_rankings(gender, seasons = [], athlete_names = [], events = [], 
 
 
 def tnf_team_rankings(gender, seasons = [], universities = []):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    g = "Men" if gender == "MALE" else "Women"
+    g = "Men" if gender == "m" else "Women"
 
     seasons = [f"{season}/{season + 1}" for season in seasons]
 
@@ -66,10 +66,10 @@ def tnf_team_rankings(gender, seasons = [], universities = []):
 
 
 def tnf_rosters(gender, seasons = [], universities = []):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    g = "M" if gender == "MALE" else "F"
+    g = "M" if gender == "m" else "F"
 
     url = "https://github.com/uwaggs/usports-data/releases/download/tnf_rosters/tnf_rosters.csv"
     err, df = h.get_data(url) 

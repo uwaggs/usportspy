@@ -6,7 +6,7 @@ with open('PYPI.md', 'r') as f:
 
 setup(
     name='usportspy',
-    version='0.0.9',
+    version='0.0.10',
     packages=find_packages(),
     install_requires=[
         'requests',

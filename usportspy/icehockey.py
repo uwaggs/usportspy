@@ -5,10 +5,10 @@ import pandas as pd
 Ice Hockey
 '''
 def ice_hockey_get_schedule(gender):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    if gender == "MALE":
+    if gender == "m":
         url = "https://github.com/uwaggs/usports-data/releases/download/hockey_schedule/mens_mice_schedule.csv"
     else:
         url = "https://github.com/uwaggs/usports-data/releases/download/hockey_schedule/womens_wice_schedule.csv"
@@ -22,10 +22,10 @@ def ice_hockey_get_schedule(gender):
 
 
 def ice_hockey_get_team_box_score(gender, seasons=[]):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    prefix = "mens" if gender == "MALE" else "womens"
+    prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
 
     if len(seasons):
@@ -50,10 +50,10 @@ def ice_hockey_get_team_box_score(gender, seasons=[]):
 
     
 def ice_hockey_get_player_box_score(gender, seasons=[]):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    prefix = "mens" if gender == "MALE" else "womens"
+    prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
 
     if len(seasons):
@@ -78,10 +78,10 @@ def ice_hockey_get_player_box_score(gender, seasons=[]):
 
 
 def ice_hockey_get_pbp(gender, seasons=[]):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    prefix = "mens_mice" if gender == "MALE" else "womens_wice"
+    prefix = "mens_mice" if gender == "m" else "womens_wice"
     combined_df = pd.DataFrame()
 
     if len(seasons):

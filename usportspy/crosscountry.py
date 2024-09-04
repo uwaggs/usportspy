@@ -4,10 +4,10 @@ from . import helpers as h
 Cross-Country Functions
 '''
 def xc_team_rankings(gender, seasons = [], universities = []):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    g = "MEN" if gender == "MALE" else "WOMEN"
+    g = "MEN" if gender == "m" else "WOMEN"
 
     url = "https://github.com/uwaggs/usports-data/releases/download/xc_team_rankings/xc_team_rankings.csv"
     err, df = h.get_data(url) 
@@ -30,10 +30,10 @@ def xc_team_rankings(gender, seasons = [], universities = []):
 
 
 def xc_rosters(gender, seasons = [], universities = []):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    g = "M" if gender == "MALE" else "F"
+    g = "M" if gender == "m" else "F"
     
     url = "https://github.com/uwaggs/usports-data/releases/download/xc_rosters/xc_rosters.csv"
     err, df = h.get_data(url) 

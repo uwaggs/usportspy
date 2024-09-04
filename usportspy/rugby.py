@@ -5,13 +5,13 @@ import pandas as pd
 Rugby
 '''
 def rugby_get_schedule(gender):
-    if gender not in ["MALE", "FEMALE"]:
-        raise h.UsportspyError("'gender' must be either 'MALE' or 'FEMALE'.")
+    if gender not in ["m", "w"]:
+        raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
-    if gender not in ["FEMALE"]:
-        raise h.UsportspyError("'gender' must be 'FEMALE' since only Womens Rugby is available for USPORTS currently.")
+    if gender not in ["w"]:
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Rugby is available for USPORTS currently.")
 
-    if gender == "MALE":
+    if gender == "m":
         url = ""
     else:
         url = "https://github.com/uwaggs/usports-data/releases/download/rugby_schedule/Womens_rugby_schedule.csv"
