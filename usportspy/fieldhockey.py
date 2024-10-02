@@ -9,7 +9,7 @@ def fh_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
     if gender not in ["w"]:
-        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for U SPORTS currently.")
 
     if gender == "m":
         url = "https://github.com/uwaggs/usports-data/releases/download/field_hockey_schedule/mens_fh_schedule.csv"
@@ -29,7 +29,7 @@ def fh_get_team_box_score(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["w"]:
-        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for U SPORTS currently.")
 
     prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
@@ -60,7 +60,7 @@ def fh_get_player_box_score(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["w"]:
-        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for U SPORTS currently.")
     
     prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
@@ -91,7 +91,7 @@ def fh_get_pbp(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["w"]:
-        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Field Hockey is available for U SPORTS currently.")
 
     prefix = "mens" if gender == "m" else "womens"
     combined_df = pd.DataFrame()
