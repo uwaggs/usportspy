@@ -6,11 +6,12 @@ with open('PYPI.md', 'r') as f:
 
 setup(
     name='usportspy',
-    version='0.0.10',
+    version='0.0.11',
     packages=find_packages(),
     install_requires=[
         'requests',
         'pandas',
+        'pyjanitor',
     ],
     description="Extract and Analyze Data from U SPORTS, the Governing Body of University Sport in Canada. ",
     long_description=l_description,

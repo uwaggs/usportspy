@@ -1,4 +1,5 @@
 from . import helpers as h
+from janitor import clean_names
 
 '''
 Cross-Country Functions
@@ -26,7 +27,7 @@ def xc_team_rankings(gender, seasons = [], universities = []):
         df = df.loc[df['University'].isin(universities)]
 
 
-    return df
+    return clean_names(df)
 
 
 def xc_rosters(gender, seasons = [], universities = []):
@@ -56,7 +57,7 @@ def xc_rosters(gender, seasons = [], universities = []):
     if len(universities):
         df = df.loc[df['University'].isin(universities)]
 
-    return df
+    return clean_names(df)
 
 
 def xc_meet_results(seasons = [], universities = []):
@@ -84,7 +85,7 @@ def xc_meet_results(seasons = [], universities = []):
         df = df.loc[df['University'].isin(universities)]
 
 
-    return df
+    return clean_names(df)
 
 
 def xc_universities():
@@ -95,6 +96,6 @@ def xc_universities():
         message = f"Error making request for cross-country university data."
         raise h.UsportspyError(message, err)
 
-    return df
+    return clean_names(df)
 
 

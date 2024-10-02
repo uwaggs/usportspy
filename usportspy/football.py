@@ -1,6 +1,6 @@
 from . import helpers as h
 import pandas as pd
-
+from janitor import clean_names
 
 '''
 Football
@@ -22,7 +22,7 @@ def fb_get_schedule(gender):
         message = f"Error making request for football schedule for Gender: {gender}."
         raise h.UsportspyError(message, err)
 
-    return df
+    return clean_names(df)
 
 
 def fb_get_returns(gender, seasons=[]):
@@ -52,7 +52,7 @@ def fb_get_returns(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
 def fb_get_offence(gender, seasons=[]):
@@ -82,7 +82,7 @@ def fb_get_offence(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
 def fb_get_defence(gender, seasons=[]):
@@ -112,7 +112,7 @@ def fb_get_defence(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
 def fb_get_kicking(gender, seasons=[]):
@@ -142,7 +142,7 @@ def fb_get_kicking(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
 def fb_get_pbp(gender, seasons=[]):
@@ -172,7 +172,7 @@ def fb_get_pbp(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
 def fb_get_scoring_summaries(gender, seasons=[]):
@@ -202,6 +202,6 @@ def fb_get_scoring_summaries(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 

@@ -1,5 +1,6 @@
 from . import helpers as h
 import pandas as pd
+from janitor import clean_names
 
 '''
 Rugby
@@ -23,7 +24,7 @@ def rugby_get_schedule(gender):
     
     df = df.drop(columns=['Unnamed: 0'], errors='ignore')
 
-    return df
+    return clean_names(df)
 
 
 

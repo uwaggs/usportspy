@@ -1,5 +1,5 @@
 from . import helpers as h
-
+from janitor import clean_names
 
 '''
 Swimming Functions
@@ -10,7 +10,7 @@ def swimming_team_rankings():
     if err:
         message = f"Error getting swimming team rankings."
         raise h.UsportspyError(message, err)
-    return df 
+    return clean_names(df)
 
 
 def swimming_athlete_rankings():
@@ -19,6 +19,6 @@ def swimming_athlete_rankings():
     if err:
         message = f"Error getting swimming athlete rankings."
         raise h.UsportspyError(message, err)
-    return df
+    return clean_names(df)
 
 
