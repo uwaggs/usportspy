@@ -10,7 +10,7 @@ def fb_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     if gender == "m":
         url = "https://github.com/uwaggs/usports-data/releases/download/football_schedule/fball_schedule.csv"
@@ -30,7 +30,7 @@ def fb_get_returns(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     combined_df = pd.DataFrame()
 
@@ -60,7 +60,7 @@ def fb_get_offence(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     combined_df = pd.DataFrame()
 
@@ -90,7 +90,7 @@ def fb_get_defence(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     combined_df = pd.DataFrame()
 
@@ -120,7 +120,7 @@ def fb_get_kicking(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     combined_df = pd.DataFrame()
 
@@ -150,7 +150,7 @@ def fb_get_pbp(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     combined_df = pd.DataFrame()
 
@@ -180,7 +180,7 @@ def fb_get_scoring_summaries(gender, seasons=[]):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender not in ["m"]:
-        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     combined_df = pd.DataFrame()
 

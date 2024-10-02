@@ -12,7 +12,7 @@ setup(
         'requests',
         'pandas',
     ],
-    description="One-Stop-Shop for USPORTS Data",
+    description="Extract and Analyze Data from U SPORTS, the Governing Body of University Sport in Canada. ",
     long_description=l_description,
     long_description_content_type='text/markdown',
 )

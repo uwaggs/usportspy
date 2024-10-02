@@ -14,12 +14,15 @@ def wrestling_athlete_rankings(gender, weight=None):
 
     err, df = h.get_data(url) 
     if err:
-        raise h.UsportspyError(f"Error makign request for wrestling athlete rankings for Gender: {gender} and Weight: {weight}kg.", err)
+        raise h.UsportspyError(f"Error making request for wrestling athlete rankings for Gender: {gender} and Weight: {weight}kg.", err)
 
     if weight:
         df = df[df['Weight Category'] == str(weight) + 'kg']
 
     df = df.reset_index(drop=True)
+    if len(df) == 0:
+        raise h.UsportspyError(f"Error: {weight}kg is unavailable.")
+
     return df
 
 
@@ -34,7 +37,7 @@ def wrestling_team_rankings(gender):
         
     err, df = h.get_data(url) 
     if err:
-        raise h.UsportspyError(f"Error makign request for wrestling team rankings for Gender: {gender}.", err)
+        raise h.UsportspyError(f"Error making request for wrestling team rankings for Gender: {gender}.", err)
 
     return df 
 

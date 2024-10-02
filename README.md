@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h2 style="flex: 1; text-align: left;">USPORTSPY - One-Stop-Shop for USPORTS Data</h2>
+    <h2 style="flex: 1; text-align: left;">usportspy</h2>
     <img src="usportspy.png" alt="USPORTSPY Logo" style="width: 100px; height: auto; margin-left: 10px; align-self: flex-end;">
 </div>
 

@@ -9,7 +9,7 @@ def rugby_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
     if gender not in ["w"]:
-        raise h.UsportspyError("'gender' must be 'w' since only Women's Rugby is available for USPORTS currently.")
+        raise h.UsportspyError("'gender' must be 'w' since only Women's Rugby is available for U SPORTS currently.")
 
     if gender == "m":
         url = ""
