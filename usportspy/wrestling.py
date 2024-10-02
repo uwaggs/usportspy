@@ -1,4 +1,5 @@
 from . import helpers as h
+from janitor import clean_names
 
 '''
 Wrestling Functions
@@ -23,7 +24,7 @@ def wrestling_athlete_rankings(gender, weight=None):
     if len(df) == 0:
         raise h.UsportspyError(f"Error: {weight}kg is unavailable.")
 
-    return df
+    return clean_names(df)
 
 
 def wrestling_team_rankings(gender):
@@ -39,6 +40,6 @@ def wrestling_team_rankings(gender):
     if err:
         raise h.UsportspyError(f"Error making request for wrestling team rankings for Gender: {gender}.", err)
 
-    return df 
+    return clean_names(df) 
 
 

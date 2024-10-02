@@ -1,5 +1,5 @@
 from . import helpers as h
-
+from janitor import clean_names
 
 '''
 Track and Field Functions
@@ -35,7 +35,7 @@ def tnf_athlete_rankings(gender, seasons = [], athlete_names = [], events = [], 
 
 
 
-    return df
+    return clean_names(df)
 
 
 def tnf_team_rankings(gender, seasons = [], universities = []):
@@ -62,7 +62,7 @@ def tnf_team_rankings(gender, seasons = [], universities = []):
         df = df.loc[df['University'].isin(universities)]
 
 
-    return df
+    return clean_names(df)
 
 
 def tnf_rosters(gender, seasons = [], universities = []):
@@ -91,7 +91,7 @@ def tnf_rosters(gender, seasons = [], universities = []):
     if len(universities):
         df = df.loc[df['University'].isin(universities)]
 
-    return df
+    return clean_names(df)
 
 
 def tnf_meet_results(seasons = [], universities = []):
@@ -119,7 +119,7 @@ def tnf_meet_results(seasons = [], universities = []):
         df = df.loc[df['University'].isin(universities)]
 
 
-    return df
+    return clean_names(df)
 
 
 def tnf_universities():
@@ -130,6 +130,6 @@ def tnf_universities():
         message = f"Error making request for track and field university data."
         raise h.UsportspyError(message, err)
 
-    return df
+    return clean_names(df)
 
 

@@ -1,5 +1,6 @@
 from . import helpers as h
 import pandas as pd
+from janitor import clean_names
 
 '''
 Volleyball
@@ -18,7 +19,7 @@ def volleyball_get_schedule(gender):
         message = f"Error making request for volleyball schedule for Gender: {gender}."
         raise h.UsportspyError(message, err)
 
-    return df
+    return clean_names(df)
 
 
 def volleyball_get_team_box_score(gender, seasons=[]):
@@ -46,7 +47,7 @@ def volleyball_get_team_box_score(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
     
@@ -75,7 +76,7 @@ def volleyball_get_player_box_score(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
 
 def volleyball_get_pbp(gender, seasons=[]):
@@ -103,5 +104,5 @@ def volleyball_get_pbp(gender, seasons=[]):
 
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    return combined_df
+    return clean_names(combined_df)
 
