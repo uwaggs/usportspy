@@ -7,6 +7,22 @@ import re
 Helper functions and classes
 '''
 class UsportspyError(Exception):
+    """
+    Custom exception for the usportspy package.
+
+    Parameters
+    ----------
+    message : str
+        Main error message.
+    detailed_err : Exception, optional
+        Original exception for traceback context.
+
+    Examples
+    --------
+    >>> raise UsportspyError("Something went wrong")
+    >>> raise UsportspyError("Fetch failed", detailed_err=e)
+    """
+
     def __init__(self, message="", detailed_err=None):
         if detailed_err:
             super().__init__(f"{message}\n\nTrue Error:\n{repr(detailed_err)}")
@@ -15,6 +31,25 @@ class UsportspyError(Exception):
 
 
 def get_data(url):
+    """
+    Retrieves CSV data from a remote URL.
+
+    Parameters
+    ----------
+    url : str
+        URL to the CSV file.
+
+    Returns
+    -------
+    tuple
+        (error, DataFrame): Returns (None, df) if successful, or (Exception, None) if failed.
+
+    Examples
+    --------
+    >>> err, df = get_data("https://example.com/data.csv")
+    >>> if err: print("Error:", err)
+    """
+
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -26,10 +61,53 @@ def get_data(url):
 
 
 def year_to_season(year):
+    """
+    Converts a start year to U SPORTS season format (e.g., 2023 → '2023-24').
+
+    Parameters
+    ----------
+    year : int
+        Starting year of the season.
+
+    Returns
+    -------
+    str
+        Season string in format 'YYYY-YY'.
+
+    Examples
+    --------
+    >>> year_to_season(2023)
+    '2023-24'
+    """
+
     return f"{year}-{str((year % 100) + 1).zfill(2)}"
 
 
 def available_seasons(tag):
+    """
+    Gets available seasons for a given GitHub release tag.
+
+    Parameters
+    ----------
+    tag : str
+        GitHub release tag (e.g., 'basketball_team_box_score').
+
+    Returns
+    -------
+    list of int
+        Sorted list of available starting years.
+
+    Raises
+    ------
+    Exception
+        If the GitHub API request fails.
+
+    Examples
+    --------
+    >>> available_seasons("basketball_team_box_score")
+    [2018, 2019, 2020]
+    """
+
     response = requests.get(f"https://api.github.com/repos/uwaggs/usports-data/releases/tags/{tag}")
 
     if response.status_code == 200:
@@ -48,6 +126,26 @@ def available_seasons(tag):
     
 
 def validate_season(tag, seasons):
+    """
+    Validates that all requested seasons are available.
+
+    Parameters
+    ----------
+    tag : str
+        GitHub release tag.
+    seasons : list of int
+        List of starting years to validate.
+
+    Raises
+    ------
+    UsportspyError
+        If any requested seasons are not found in available seasons.
+
+    Examples
+    --------
+    >>> validate_season("basketball_team_box_score", [2020, 2022])
+    """
+    
     a_seasons = available_seasons(tag)
 
     bad_seasons_requested = sorted(list(set(seasons).difference(set(a_seasons))))

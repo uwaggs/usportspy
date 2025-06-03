@@ -5,6 +5,33 @@ from janitor import clean_names
 Track and Field Functions
 '''
 def tnf_athlete_rankings(gender, seasons = [], athlete_names = [], events = [], universities = []):
+    """
+    Fetches U SPORTS track and field athlete rankings with optional filters.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+    seasons : list of int, optional
+        List of season starting years (e.g., [2022]).
+    athlete_names : list of str, optional
+        List of athlete names to filter by.
+    events : list of str, optional
+        List of event names to filter by.
+    universities : list of str, optional
+        List of university names to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Athlete rankings with columns such as:
+        `rank`, `athlete_name`, `university`, `performance`, `meet`, `date`, `event`, `season`.
+
+    Examples
+    --------
+    >>> tnf_athlete_rankings("m", seasons=[2022], events=["60-meter"])
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -39,6 +66,29 @@ def tnf_athlete_rankings(gender, seasons = [], athlete_names = [], events = [], 
 
 
 def tnf_team_rankings(gender, seasons = [], universities = []):
+    """
+    Fetches U SPORTS track and field team rankings with optional filters.
+
+    Parameters
+    ----------
+    gender : str
+        "m" or "w".
+    seasons : list of int, optional
+        Starting years of the season (e.g., [2023]).
+    universities : list of str, optional
+        University names to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Team rankings with columns like:
+        `season`, `gender`, `ranking`, `university`, `pts`, `recorded_date`.
+
+    Examples
+    --------
+    >>> tnf_team_rankings("w", seasons=[2023])
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -66,6 +116,30 @@ def tnf_team_rankings(gender, seasons = [], universities = []):
 
 
 def tnf_rosters(gender, seasons = [], universities = []):
+    """
+    Fetches U SPORTS track and field rosters.
+
+    Parameters
+    ----------
+    gender : str
+        "m" or "w".
+    seasons : list of int, optional
+        Starting years of the season.
+    universities : list of str, optional
+        University names to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Roster information with columns like:
+        `university`, `name`, `sex`, `birthday`, `eligibility`, 
+        `hometown`, `type`, `recorded_date`.
+
+    Examples
+    --------
+    >>> tnf_rosters("m", seasons=[2024], universities=["Guelph"])
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -95,6 +169,26 @@ def tnf_rosters(gender, seasons = [], universities = []):
 
 
 def tnf_meet_results(seasons = [], universities = []):
+    """
+    Fetches U SPORTS track and field meet results.
+
+    Parameters
+    ----------
+    seasons : list of int, optional
+        List of season starting years (e.g., [2022]).
+    universities : list of str, optional
+        University names to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Meet results with columns: `date`, `name`, `location`, `results`.
+
+    Examples
+    --------
+    >>> tnf_meet_results(seasons=[2022])
+    """
+
     url = "https://github.com/uwaggs/usports-data/releases/download/tnf_meet_results/tnf_meet_results.csv"
     err, df = h.get_data(url)
     if err:
@@ -123,6 +217,20 @@ def tnf_meet_results(seasons = [], universities = []):
 
 
 def tnf_universities():
+    """
+    Fetches a list of U SPORTS track and field universities.
+
+    Returns
+    -------
+    pandas.DataFrame
+        University metadata. Columns: 
+        `university`, `conference`, `link`, `team_version`, `athlete_version`.
+
+    Examples
+    --------
+    >>> tnf_universities()
+    """
+
     url = "https://github.com/uwaggs/usports-data/releases/download/tnf_universities/tnf_universities.csv"
     err, df = h.get_data(url)
 
@@ -131,5 +239,3 @@ def tnf_universities():
         raise h.UsportspyError(message, err)
 
     return clean_names(df)
-
-

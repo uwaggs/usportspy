@@ -6,6 +6,28 @@ from janitor import clean_names
 Football
 '''
 def fb_get_schedule(gender):
+    """
+    Fetches the Football schedule.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns: `date`, `away`, `away_score`, `home`, 
+        `home_score`, `status`, `notes`, `month`, `box_scores`, 
+        `conference`, `division`, `exhibition`, `postseason`, `season`.
+
+    Examples
+    --------
+    >>> from usportspy import fb_get_schedule
+    >>> schedule_male = fb_get_schedule("m")
+    >>> print(schedule_male.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
@@ -26,6 +48,29 @@ def fb_get_schedule(gender):
 
 
 def fb_get_returns(gender, seasons=[]):
+    """
+    Fetches Football returns data for specified seasons.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+    seasons : list of int, optional
+        List of seasons (starting years). If not provided, all seasons are returned.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns like:
+        `player`, `punting_returns_no`, `punting_returns_yds`, `kickoff_returns_td`,
+        `interception_returns_td`, `team`, `game_id`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> returns = fb_get_returns("m", [2019, 2021])
+    >>> print(returns.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -56,6 +101,29 @@ def fb_get_returns(gender, seasons=[]):
 
 
 def fb_get_offence(gender, seasons=[]):
+    """
+    Fetches Football offensive stats for specified seasons.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+    seasons : list of int, optional
+        List of starting years of the seasons to filter.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns like:
+        `player`, `passing_yds`, `rushing_att`, `receiving_td`, `fumble_lost`, 
+        `team`, `game_id`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> offence = fb_get_offence("m", [2019, 2021])
+    >>> print(offence.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -86,6 +154,28 @@ def fb_get_offence(gender, seasons=[]):
 
 
 def fb_get_defence(gender, seasons=[]):
+    """
+    Fetches Football defensive stats for specified seasons.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+    seasons : list of int, optional
+        List of starting years of the seasons to filter.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns like:
+        `player`, `solo`, `ast`, `sacks`, `int`, `br_up`, `team`, `game_id`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> defence = fb_get_defence("m", [2019, 2021])
+    >>> print(defence.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -116,6 +206,29 @@ def fb_get_defence(gender, seasons=[]):
 
 
 def fb_get_kicking(gender, seasons=[]):
+    """
+    Fetches Football kicking stats for specified seasons.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+    seasons : list of int, optional
+        List of starting years of the seasons to filter.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns like:
+        `player`, `punting_no`, `kicking_fgm`, `kicking_pts`, 
+        `kickoffs_avg`, `kickoffs_ob`, `team`, `game_id`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> kicking = fb_get_kicking("m", [2019, 2021])
+    >>> print(kicking.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -146,6 +259,29 @@ def fb_get_kicking(gender, seasons=[]):
 
 
 def fb_get_pbp(gender, seasons=[]):
+    """
+    Fetches Football play-by-play data.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+    seasons : list of int, optional
+        List of starting years of the seasons to filter.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns:
+        `downs`, `event`, `quarter`, `game_id`, `away_team`, 
+        `home_team`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> pbp = fb_get_pbp("m", [2019, 2021])
+    >>> print(pbp.head())
+    """
+    
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -176,6 +312,29 @@ def fb_get_pbp(gender, seasons=[]):
 
 
 def fb_get_scoring_summaries(gender, seasons=[]):
+    """
+    Fetches Football scoring summaries.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "m" is supported.
+    seasons : list of int, optional
+        List of starting years of the seasons to filter.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns:
+        `prd`, `time`, `scoring_summary`, `away_score`, `home_score`, 
+        `away_team`, `home_team`, `game_id`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> scoring = fb_get_scoring_summaries("m", [2019, 2021])
+    >>> print(scoring.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -203,5 +362,3 @@ def fb_get_scoring_summaries(gender, seasons=[]):
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
     return clean_names(combined_df)
-
-

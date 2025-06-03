@@ -7,6 +7,28 @@ from janitor import clean_names
 Field Hockey
 '''
 def fh_get_schedule(gender):
+    """
+    Fetches the schedule for Field Hockey games.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "w" is supported currently.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns: `date`, `away`, `away_score`, `home`, 
+        `home_score`, `status`, `notes`, `month`, `box_scores`, `conference`, 
+        `division`, `exhibition`, `post_season`, and `season`.
+    
+    Examples
+    --------
+    >>> from usportspy import fh_get_schedule
+    >>> schedule_female = fh_get_schedule("w")
+    >>> print(schedule_female.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
@@ -27,6 +49,30 @@ def fh_get_schedule(gender):
 
 
 def fh_get_team_box_score(gender, seasons=[]):
+    """
+    Fetches the team box scores for Field Hockey games.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "w" is supported.
+    seasons : list of int, optional
+        List of seasons (starting year) to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns: `player`, `team`, `sh`, `sog`, `g`, `a`, `ds`,
+        `min`, `yellow_card`, `red_card`, `game_id`, `sog_against`, `ga`, `sv`,
+        `goalie_mins`, `game_date`, `season`, and `season_type`.
+
+    Examples
+    --------
+    >>> from usportspy import fh_get_team_box_score
+    >>> team_box_scores_female = fh_get_team_box_score("w", [2018, 2019])
+    >>> print(team_box_scores_female.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -58,6 +104,30 @@ def fh_get_team_box_score(gender, seasons=[]):
 
     
 def fh_get_player_box_score(gender, seasons=[]):
+    """
+    Fetches the player box scores for Field Hockey games.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "w" is supported.
+    seasons : list of int, optional
+        List of seasons (starting year) to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns: `player`, `team`, `sh`, `sog`, `g`, `a`, `ds`, 
+        `min`, `yellow_card`, `red_card`, `game_id`, `sog_against`, `ga`, `sv`, 
+        `goalie_mins`, `game_date`, `season`, and `season_type`.
+
+    Examples
+    --------
+    >>> from usportspy import fh_get_player_box_score
+    >>> player_box_scores_female = fh_get_player_box_score("w", [2018, 2019])
+    >>> print(player_box_scores_female.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -89,6 +159,29 @@ def fh_get_player_box_score(gender, seasons=[]):
 
 
 def fh_get_pbp(gender, seasons=[]):
+    """
+    Fetches the play-by-play data for Field Hockey games.
+
+    Parameters
+    ----------
+    gender : str
+        Must be "m" or "w". Only "w" is supported.
+    seasons : list of int, optional
+        List of seasons (starting year) to filter by.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with columns: `time`, `event`, `quarters`, `game_id`, 
+        `season`, and `season_type`.
+
+    Examples
+    --------
+    >>> from usportspy import fh_get_pbp
+    >>> pbp_female = fh_get_pbp("w", [2018, 2019])
+    >>> print(pbp_female.head())
+    """
+    
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -117,4 +210,3 @@ def fh_get_pbp(gender, seasons=[]):
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
     return clean_names(combined_df)
-
