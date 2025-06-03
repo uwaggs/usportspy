@@ -6,6 +6,27 @@ from janitor import clean_names
 Rugby
 '''
 def rugby_get_schedule(gender):
+    """
+    Fetches the Rugby schedule based on gender.
+
+    Parameters
+    ----------
+    gender : str
+        Must be either "m" (men's) or "w" (women's). Currently, only women's data is available.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A DataFrame containing the Rugby schedule. Columns include:
+        `date`, `away`, `away_score`, `home`, `home_score`, `status`, `notes`,
+        `month`, `conference`, `division`, `exhibition`, `postseason`, `season`.
+
+    Examples
+    --------
+    >>> from usportspy import rugby_get_schedule
+    >>> rugby_get_schedule("w").head()
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
     
@@ -25,6 +46,3 @@ def rugby_get_schedule(gender):
     df = df.drop(columns=['Unnamed: 0'], errors='ignore')
 
     return clean_names(df)
-
-
-

@@ -5,6 +5,33 @@ from janitor import clean_names
 Cross-Country Functions
 '''
 def xc_team_rankings(gender, seasons = [], universities = []):
+    """
+    Fetches the rankings of cross-country teams.
+
+    Parameters
+    ----------
+    gender : str
+        Must be either "m" (men's) or "w" (women's).
+    seasons : list of int, optional
+        List of seasons (starting year) to filter by.
+        If not provided, all seasons are included.
+    universities : list of str, optional
+        List of university names to filter by.
+        If not provided, all universities are included.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A DataFrame containing cross-country team rankings with columns:
+        `season`, `gender`, `date`, `week`, `ranking`, `university`, `pts`.
+
+    Examples
+    --------
+    >>> from usportspy import xc_team_rankings
+    >>> team_rankings = xc_team_rankings("m", seasons=[2023])
+    >>> print(team_rankings.head())
+    """
+    
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -31,6 +58,34 @@ def xc_team_rankings(gender, seasons = [], universities = []):
 
 
 def xc_rosters(gender, seasons = [], universities = []):
+    """
+    Fetches the rosters of cross-country teams.
+
+    Parameters
+    ----------
+    gender : str
+        Must be either "m" (men's) or "w" (women's).
+    seasons : list of int, optional
+        List of seasons (starting year) to filter by.
+        If not provided, all seasons are included.
+    universities : list of str, optional
+        List of university names to filter by.
+        If not provided, all universities are included.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A DataFrame containing athlete roster details with columns:
+        `university`, `name`, `sex`, `birthday`, `program_position`, 
+        `eligibility`, `hometown`, `type`, `recorded_date`.
+
+    Examples
+    --------
+    >>> from usportspy import xc_rosters
+    >>> rosters = xc_rosters("w", seasons=[2024])
+    >>> print(rosters.head())
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -61,6 +116,31 @@ def xc_rosters(gender, seasons = [], universities = []):
 
 
 def xc_meet_results(seasons = [], universities = []):
+    """
+    Fetches the meet results of cross-country events.
+
+    Parameters
+    ----------
+    seasons : list of int, optional
+        List of seasons (starting year) to filter by.
+        If not provided, all seasons are included.
+    universities : list of str, optional
+        List of university names to filter by.
+        If not provided, all universities are included.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A DataFrame containing meet results with columns:
+        `date`, `name`, `location`, `results`.
+
+    Examples
+    --------
+    >>> from usportspy import xc_meet_results
+    >>> meet_results = xc_meet_results([2022])
+    >>> print(meet_results.head())
+    """
+
     url = "https://github.com/uwaggs/usports-data/releases/download/xc_meet_results/xc_meet_results.csv"
     err, df = h.get_data(url)
     if err:
@@ -89,6 +169,22 @@ def xc_meet_results(seasons = [], universities = []):
 
 
 def xc_universities():
+    """
+    Fetches the list of universities with cross-country teams.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A DataFrame listing universities with columns:
+        `university`, `conference`, `link`, `team_version`, `athlete_version`.
+
+    Examples
+    --------
+    >>> from usportspy import xc_universities
+    >>> universities = xc_universities()
+    >>> print(universities.head())
+    """
+
     url = "https://github.com/uwaggs/usports-data/releases/download/tnf_universities/tnf_universities.csv"
     err, df = h.get_data(url)
 
@@ -97,5 +193,3 @@ def xc_universities():
         raise h.UsportspyError(message, err)
 
     return clean_names(df)
-
-

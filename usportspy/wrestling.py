@@ -5,6 +5,27 @@ from janitor import clean_names
 Wrestling Functions
 '''
 def wrestling_athlete_rankings(gender, weight=None):
+    """
+    Fetches wrestling athlete rankings.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+    weight : int, optional
+        Filter rankings to a specific weight class (e.g., 57).
+
+    Returns
+    -------
+    pandas.DataFrame
+        Athlete rankings. Columns: `weight_category`, `rank`, `name`, `school`, `last_updated`.
+
+    Examples
+    --------
+    >>> wrestling_athlete_rankings("m", 57)
+    >>> wrestling_athlete_rankings("w", 56)
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -28,6 +49,25 @@ def wrestling_athlete_rankings(gender, weight=None):
 
 
 def wrestling_team_rankings(gender):
+    """
+    Fetches wrestling team rankings by gender.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Columns: `rank`, `school`, `points`, `previous_rank`, `last_updated`.
+
+    Examples
+    --------
+    >>> wrestling_team_rankings("m")
+    >>> wrestling_team_rankings("w")
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -41,5 +81,3 @@ def wrestling_team_rankings(gender):
         raise h.UsportspyError(f"Error making request for wrestling team rankings for Gender: {gender}.", err)
 
     return clean_names(df) 
-
-

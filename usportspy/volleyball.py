@@ -6,6 +6,27 @@ from janitor import clean_names
 Volleyball
 '''
 def volleyball_get_schedule(gender):
+    """
+    Fetches the volleyball schedule for the specified gender.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Schedule data with columns like:
+        `date`, `away`, `home`, `scores`, `status`, `notes`, `month`,
+        `box_scores`, `conference`, `division`, `exhibition`, `postseason`, `season`.
+
+    Examples
+    --------
+    >>> volleyball_get_schedule("m")
+    >>> volleyball_get_schedule("w")
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -23,6 +44,27 @@ def volleyball_get_schedule(gender):
 
 
 def volleyball_get_team_box_score(gender, seasons=[]):
+    """
+    Retrieves volleyball team box score data.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+    seasons : list of int, optional
+        Season start years (e.g., [2019, 2021]). Returns all if not provided.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Columns include: `set`, `k`, `e`, `ta`, `pct`, `team_name`, `game_id`, 
+        `date_time`, `points`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> volleyball_get_team_box_score("w", [2021])
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -50,8 +92,29 @@ def volleyball_get_team_box_score(gender, seasons=[]):
     return clean_names(combined_df)
 
 
-    
 def volleyball_get_player_box_score(gender, seasons=[]):
+    """
+    Retrieves volleyball player box score data.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+    seasons : list of int, optional
+        List of season years. Returns all if not specified.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Columns: `player_number`, `player`, `sp`, `k`, `e`, `ta`, `k_percentage`,
+        `a`, `sa`, `se`, `re`, `digs`, `bs`, `ba`, `be`, `bhe`, `pts`, 
+        `team_name`, `player_links`, `game_id`, `date_time`, `start`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> volleyball_get_player_box_score("m", [2020])
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -80,6 +143,27 @@ def volleyball_get_player_box_score(gender, seasons=[]):
 
 
 def volleyball_get_pbp(gender, seasons=[]):
+    """
+    Retrieves play-by-play data for volleyball.
+
+    Parameters
+    ----------
+    gender : str
+        "m" for men's or "w" for women's.
+    seasons : list of int, optional
+        Season years to include.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Columns include: `event`, `home`, `away`, `score`, `set`, 
+        `game_id`, `season`, `season_type`.
+
+    Examples
+    --------
+    >>> volleyball_get_pbp("w", [2022])
+    """
+
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
@@ -105,4 +189,3 @@ def volleyball_get_pbp(gender, seasons=[]):
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
     return clean_names(combined_df)
-
