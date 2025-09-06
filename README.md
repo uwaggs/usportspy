@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
     <h2 style="flex: 1; text-align: left;">usportspy</h2>
-    <img src="usportspy.png" alt="USPORTSPY Logo" style="width: 100px; height: auto; margin-left: 10px; align-self: flex-end;">
+    <img src="usportspy.svg" alt="USPORTSPY Logo" style="width: 150px; height: auto; margin-left: 10px; align-self: flex-end;">
 </div>
 
 ### Disclaimer
