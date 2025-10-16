@@ -21,6 +21,8 @@ Documentation can be found in the [wiki](https://github.com/uwaggs/usportspy/wik
 - Volleyball
 - Wrestling
 
+## Acknowledgement
 
+A big thanks to [Rebecca Lai](https://www.rebeccalai.net) for the awesome logo design!
 
 
