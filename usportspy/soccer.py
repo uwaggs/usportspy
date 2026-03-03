@@ -91,7 +91,7 @@ def soccer_get_pbp(gender, seasons=[]):
         seasons = h.available_seasons("Soccer_pbp")
 
     for season in seasons:
-        url = f"https://github.com/uwaggs/usports-data/releases/download/Soccer_pbp/{prefix}_pbp_{h.year_to_season(season)}.csv"
+        url = f"https://github.com/uwaggs/usports-data/releases/download/{preifx}_pbp/{prefix}_pbp_{h.year_to_season(season)}.csv"
         err, df = h.get_data(url) 
 
         if err:
