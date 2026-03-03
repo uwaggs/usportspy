@@ -10,9 +10,9 @@ def soccer_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender == "m":
-        url = "https://github.com/uwaggs/usports-data/releases/download/Soccer_Schedule/mens_msoc_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/msoc_schedule.csv"
     else:
-        url = "https://github.com/uwaggs/usports-data/releases/download/Soccer_Schedule/womens_wsoc_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/wsoc_schedule.csv"
     
     err, df = h.get_data(url) 
     if err:
@@ -26,7 +26,7 @@ def soccer_get_team_box_score(gender, seasons=[]):
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    prefix = "mens" if gender == "m" else "womens"
+    prefix = "msoc" if gender == "m" else "wsoc"
     combined_df = pd.DataFrame()
 
     if len(seasons):
@@ -35,7 +35,7 @@ def soccer_get_team_box_score(gender, seasons=[]):
         seasons = h.available_seasons("soccer_team_box_score")
 
     for season in seasons:
-        url = f"https://github.com/uwaggs/usports-data/releases/download/soccer_team_box_score/{prefix}_team_box_score_{h.year_to_season(season)}.csv"
+        url = f"https://github.com/uwaggs/usports-data/releases/download/{prefix}_team_box/{prefix}_team_box_{h.year_to_season(season)}.csv"
         err, df = h.get_data(url) 
 
         if err:
@@ -54,7 +54,7 @@ def soccer_get_player_box_score(gender, seasons=[]):
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    prefix = "mens" if gender == "m" else "womens"
+    prefix = "msoc" if gender == "m" else "wsoc"
     combined_df = pd.DataFrame()
 
     if len(seasons):
@@ -63,7 +63,7 @@ def soccer_get_player_box_score(gender, seasons=[]):
         seasons = h.available_seasons("soccer_player_box_score")
 
     for season in seasons:
-        url = f"https://github.com/uwaggs/usports-data/releases/download/soccer_player_box_score/{prefix}_player_box_score_{h.year_to_season(season)}.csv"
+        url = f"https://github.com/uwaggs/usports-data/releases/download/{preifx}_player_box/{prefix}_player_box_{h.year_to_season(season)}.csv"
         err, df = h.get_data(url)
 
         if err:
@@ -82,7 +82,7 @@ def soccer_get_pbp(gender, seasons=[]):
     if gender not in ["m", "w"]:
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
-    prefix = "mens_msoc" if gender == "m" else "womens_wsoc"
+    prefix = "msoc" if gender == "m" else "wsoc"
     combined_df = pd.DataFrame()
 
     if len(seasons):
