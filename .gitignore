@@ -1,6 +1,26 @@
+# Build artifacts
 build/
 dist/
 usportspy.egg-info/
+*.egg-info/
+
+# Virtual environments (legacy)
 venv/
-tests/
+.venv/
+
+# uv
+.uv/
+uv.lock
+
+# Test artifacts
+.pytest_cache/
+*.coverage
+htmlcov/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 
