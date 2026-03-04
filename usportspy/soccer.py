@@ -105,4 +105,3 @@ def soccer_get_pbp(gender, seasons=[]):
 
     return clean_names(combined_df)
 
-print(soccer_get_player_box_score("m",[2025]))
