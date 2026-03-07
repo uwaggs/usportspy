@@ -13,7 +13,7 @@ def fb_get_schedule(gender):
         raise h.UsportspyError("'gender' must be 'm' since only Men's Football is available for U SPORTS currently.")
 
     if gender == "m":
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/fball_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/fball_schedule.csv"
     else:
         url = ""
     

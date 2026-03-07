@@ -31,20 +31,20 @@ def test_basketball_get_schedule_invalid_gender():
 
 def test_basketball_get_team_box_score():
     """Test getting team box scores for a single season."""
-    df = basketball_get_team_box_score(gender="m", seasons=[2024])
+    df = basketball_get_team_box_score(gender="m", seasons=[2023])
     assert isinstance(df, pd.DataFrame)
     assert len(df) > 0
 
 
 def test_basketball_get_player_box_score():
     """Test getting player box scores for a single season."""
-    df = basketball_get_player_box_score(gender="w", seasons=[2024])
+    df = basketball_get_player_box_score(gender="w", seasons=[2023])
     assert isinstance(df, pd.DataFrame)
     assert len(df) > 0
 
 
 def test_basketball_get_pbp():
     """Test getting play-by-play data for a single season."""
-    df = basketball_get_pbp(gender="m", seasons=[2024])
+    df = basketball_get_pbp(gender="m", seasons=[2023])
     assert isinstance(df, pd.DataFrame)
     assert len(df) > 0

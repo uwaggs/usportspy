@@ -10,9 +10,9 @@ def ice_hockey_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender == "m":
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/mice_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/mice_schedule.csv"
     else:
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/wice_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/wice_schedule.csv"
     
     err, df = h.get_data(url) 
     if err:

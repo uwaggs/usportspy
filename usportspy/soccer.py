@@ -10,9 +10,9 @@ def soccer_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender == "m":
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/msoc_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/msoc_schedule.csv"
     else:
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/wsoc_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/wsoc_schedule.csv"
 
     err, df = h.get_data(url)
     if err:
