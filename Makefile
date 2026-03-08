@@ -18,11 +18,11 @@ clean:
 install: build
 	uv pip install dist/usportspy*.whl --force-reinstall
 
-upload: build
+upload: clean build
 	uv run twine upload dist/*
 
 sync:
 	uv sync
 
 test:
-	uv run pytest
+	uv run pytest --test-delay=1

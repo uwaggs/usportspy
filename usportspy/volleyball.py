@@ -10,9 +10,9 @@ def volleyball_get_schedule(gender):
         raise h.UsportspyError("'gender' must be either 'm' or 'w'.")
 
     if gender == "m":
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/mvball_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/mvball_schedule.csv"
     else:
-        url = "https://github.com/uwaggs/usports-data/releases/download/Updated_Schedules/wvball_schedule.csv"
+        url = "https://github.com/uwaggs/usports-data/releases/download/new_schedules/wvball_schedule.csv"
     
     err, df = h.get_data(url) 
     if err:
@@ -65,6 +65,7 @@ def volleyball_get_player_box_score(gender, seasons=[]):
 
     for season in seasons:
         url = f"https://github.com/uwaggs/usports-data/releases/download/{prefix}_player_box/{prefix}_player_box_{h.year_to_season(season)}.csv"
+        err, df = h.get_data(url) 
 
         if err:
             message = f"Error making request for volleyball player box scores for Gender: {gender} and Seasons: {seasons}."
