@@ -8,6 +8,6 @@ from .basketball import basketball_get_schedule, basketball_get_team_box_score, 
 from .fieldhockey import fh_get_schedule, fh_get_team_box_score, fh_get_player_box_score, fh_get_pbp
 from .soccer import soccer_get_schedule, soccer_get_team_box_score, soccer_get_player_box_score, soccer_get_pbp
 from .rugby import rugby_get_schedule
-from .football import fb_get_schedule, fb_get_offence, fb_get_defence, fb_get_kicking, fb_get_pbp, fb_get_scoring_summaries, fb_get_returns
+from .football import fb_get_schedule, fb_get_offence, fb_get_defence, fb_get_kicking, fb_get_pbp, fb_get_scoring_summaries, fb_get_returns, fb_get_drive_summaries, fb_get_team
 from .helpers import UsportspyError
 
