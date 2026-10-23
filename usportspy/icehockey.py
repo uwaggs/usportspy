@@ -18,8 +18,9 @@ def ice_hockey_get_schedule(gender):
     if err:
         message = f"Error making request for ice hockey schedule for Gender: {gender}."
         raise h.UsportspyError(message, err)
-
-    return clean_names(df)
+    df = clean_names(df)
+    df = df.drop(columns=["event_id", "event_hash"], errors="ignore")
+    return df
 
 
 def ice_hockey_get_team_box_score(gender, seasons=[]):
